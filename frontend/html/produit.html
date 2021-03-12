@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="Mon produit Orinoco">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <!-- Style CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <title>Mon produit Orinoco</title>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="container-fluid bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../img/logo_orinoco.png" id="logo_accueil" alt="Site logo"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarContent" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Panier</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- PRODUIT -->
+    <main class="container my-5">
+      <h1 class="h2 text-center mt-5 mb-5">Choisissez le produit qui vous correspond</h1>
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <figure class="col-md-7">
+          <img class="col mt-3 img-fluid" id="imgproduit"></img>
+        </figure>
+        <figcaption class="card-body d-flex flex-column align-items-start" id="monproduit">
+          <div class="text-info" id="id_article"></div>
+          <div class=""id="titrearticle"></div>
+
+          <h3 class="h2" id="name_article"></h3>
+          <div class="mb-auto text-justify" id="description_article"></div>
+          <h4 class="text-secondary mt-3" id="price_article"></h4>
+        </figcaption>
+      </div>
+    </main>
+
+ 
+
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-light footer py-4">
+      <ul class="nav justify-content-md-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Politique de confidentialité</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mentions légales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nous contacter</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">©Orinoco - 2021</a>
+        </li>
+      </ul>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="../js/api.js"></script>
+    <script src="../js/produit.js"></script>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/94733f1cba.js" crossorigin="anonymous"></script>
+
+    <!-- Webpack -->
+    <script src="../dist/app.bundle.js"></script>
+  </body>
+</html>
