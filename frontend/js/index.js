@@ -12,11 +12,11 @@ const ajoutArticles = async() => {
       mesProduits.appendChild(colonneArticle);
 
       let unArticle = document.createElement("div");
-      unArticle.className = "card mb-5 px-2";
+      unArticle.className = "card rounded-0 mb-5 px-2";
       colonneArticle.appendChild(unArticle);
 
       let imgArticle = document.createElement("img");
-      imgArticle.className = "card-img-top mt-3";
+      imgArticle.className = "card-img-top rounded-0 mt-2";
       imgArticle.alt = "Card image article";
       imgArticle.src = article.imageUrl;
       unArticle.appendChild(imgArticle);
@@ -31,7 +31,7 @@ const ajoutArticles = async() => {
       cardBody.appendChild(titreH3);
 
       let titrePriceH4 = document.createElement("h4");
-      titrePriceH4.className = "card-title h5 text-center";
+      titrePriceH4.className = "card-title h5 text-center text-secondary";
       titrePriceH4.innerHTML = article.price + " €";
       cardBody.appendChild(titrePriceH4);
 
@@ -41,19 +41,19 @@ const ajoutArticles = async() => {
       cardBody.appendChild(articleDescription);
 
       let articleBtn = document.createElement("a");
-      articleBtn.className = "btn btn-primary mb-2";
+      articleBtn.className = "btn btn-dark rounded-0 mb-2 stretched-link";
       articleBtn.innerHTML = "Voir le produit";
       unArticle.appendChild(articleBtn);
 
       //////// CLIQUER SUR LE PRODUIT ET AFFICHAGE DU PRODUIT SUR " PAGE PRODUIT "
-      articleBtn.addEventListener("click", function(event) {
+      articleBtn.addEventListener("click", function() {
         const urlParametre = window.location;
         const articleId = article._id;
         let pageProduit = location.href = "html/produit.html" + "?id=" + article._id;
-      })
+      });
 
-    })
-  })
+    });
+  });
 };
   // Lancer la fonction
   ajoutArticles();
