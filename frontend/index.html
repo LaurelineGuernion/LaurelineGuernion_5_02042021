@@ -16,8 +16,8 @@
     <!-- HEADER -->
     <header class="container-fluid bg-light">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo_orinoco.png" id="logo_accueil" alt="Site logo"></a>
+        <a class="navbar-brand" href="./index.html">
+          <img src="./img/logo_orinoco.png" id="logo_accueil" alt="Site logo"></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
           <span class="navbar-toggler-icon"></span>
@@ -26,13 +26,16 @@
         <div id="navbarContent" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Accueil</a>
+              <a class="nav-link" href="./index.html">Accueil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="html/panier.html"><i class="fas fa-shopping-cart"></i> Panier</a>
+              <a class="nav-link" href="html/panier.html"><i class="fas fa-shopping-cart"></i>
+                Panier
+                <span id="nombre_article_ajout"></span>
+              </a>
             </li>
           </ul>
         </div>
@@ -42,21 +45,20 @@
     <!-- MES PRODUITS -->
     <main class="hero container-fluid">
       <section class="row align-items-center img_home_parallax">
-        <div class="col-sm-12 ">
-          <h1 class="text-center hero-bloc-text tc-white display-4">
+        <div class="col-sm-12">
+          <h1 class="text-center display-4">
             Orinoco, spécialiste d'appareil photos vintages !
           </h1>
         </div>
       </section>
       <section>
-        <h2 class="h3 mt-3 mb-5">Trouvez l'appareil photo qui vous correspond</h2>
-      <article class="row mx-3" id="mesproduits"></article>
-
+        <h2 class="h3 mt-3 mb-5 mt-5">Trouvez l'appareil photo qui vous correspond</h2>
+        <article class="row mx-3" id="mesproduits"></article>
       </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="container-fluid bg-light footer py-4">
+    <footer class="container-fluid bg-light py-4">
       <ul class="nav justify-content-md-center">
         <li class="nav-item">
           <a class="nav-link active" href="#">Politique de confidentialité</a>
@@ -76,6 +78,7 @@
     <!-- Optional JavaScript -->
     <script src="./js/api.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/header_panier.js"></script>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
