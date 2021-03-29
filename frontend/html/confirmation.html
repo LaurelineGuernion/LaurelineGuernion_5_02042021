@@ -32,7 +32,10 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Panier</a>
+              <a class="nav-link" href="panier.html"><i class="fas fa-shopping-cart"></i>
+                Panier
+                <span id="nombre_article_ajout"></span>
+              </a>
             </li>
           </ul>
         </div>
@@ -41,11 +44,27 @@
 
     <!-- CONFIRMATION -->
     <main class="hero container-fluid">
-      <section class="row align-items-center " id="produit"></section>
+      <section class="row align-items-center img_home_parallax">
+        <div class="col-sm-12">
+          <h1 class="text-center display-4" id="felicitations"></h1>
+        </div>
+      </section>
+      <section class="container">
+        <div class="col text-center border px-3 py-3 my-5">
+          <h2 class="h3 mt-3 mb-5 mt-5 text-center" id="commande_valide"></h2>
+          <h3 class="h4 mt-3 mb-5 mt-5 text-center" id="prix_total"></h3>
+          <p class="h5 mt-3 mt-5 text-center">Votre colis vous sera envoyé à l'adresse :</p>
+          <p class="h5 mt-3 mb-5 text-center" id="adresse"></p>
+
+          <p class="text-center" id="mail_confirmation"></p>
+          <p class="text-center h3">Orinoco vous remercie pour votre commande. À très bientôt sur notre site !</p>
+          <button class="btn btn-dark  rounded-0 my-5" id="retour_accueil">Retour à l'accueil</button>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="container-fluid bg-light footer py-4">
+    <footer class="container-fluid bg-light py-4">
       <ul class="nav justify-content-md-center">
         <li class="nav-item">
           <a class="nav-link active" href="#">Politique de confidentialité</a>
@@ -63,6 +82,7 @@
     </footer>
 
     <!-- Optional JavaScript -->
+    <script src="../js/confirmation.js"></script>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

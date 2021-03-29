@@ -32,7 +32,10 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Panier</a>
+              <a class="nav-link" href="panier.html"><i class="fas fa-shopping-cart"></i>
+                Panier
+                <span id="nombre_article_ajout"></span>
+              </a>
             </li>
           </ul>
         </div>
@@ -40,27 +43,37 @@
     </header>
 
     <!-- PRODUIT -->
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-light">
+      <h1 class="text-center mt-5 mb-5 display-4 text-dark">Découvrez la dernière tendance vintage</h1>
+    </div>
     <main class="container my-5">
-      <h1 class="h2 text-center mt-5 mb-5">Choisissez le produit qui vous correspond</h1>
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <figure class="col-md-7">
-          <img class="col mt-3 img-fluid" id="imgproduit"></img>
+      <div class="card rounded-0 flex-md-row mb-3">
+        <figure class="col-md-8">
+          <img class="mt-3 img-fluid" id="imgproduit"></img>
         </figure>
-        <figcaption class="card-body d-flex flex-column align-items-start" id="monproduit">
-          <div class="text-info" id="id_article"></div>
-          <div class=""id="titrearticle"></div>
-
-          <h3 class="h2" id="name_article"></h3>
+        <figcaption class="col-md-4 card-body d-flex flex-column" id="monproduit">
+          <div class="text-info small mb-2" id="id_article"></div>
+          <h3 class="h2 mt-lg-5" id="name_article"></h3>
           <div class="mb-auto text-justify" id="description_article"></div>
-          <h4 class="text-secondary mt-3" id="price_article"></h4>
+          <div class="mt-3" id="choix_quantite">
+            <span>Quantité :</span>
+            <input id="quantite" type="number" placeholder="0" min="0" max="10">
+          </div>
+          <p class="mt-5">Choisir une lentille :</p>
+          <select class="form-control form-control-sm" id="choix_lentilles">
+            <option id="to_hide">Choisir une option</option>
+          </select>
+          <h4 class="text-secondary mt-5 text-center" id="price_article"></h4>
+          <div class="text-center mb-2" id="confirmation_check">
+            <span id="ma_selection"></span>
+          </div>
+          <button type="submit" disabled href="#" class="btn btn-dark rounded-0" id="btn_envoyer">Ajouter au panier</button>
         </figcaption>
       </div>
     </main>
 
- 
-
     <!-- FOOTER -->
-    <footer class="container-fluid bg-light footer py-4">
+    <footer class="container-fluid bg-light py-4">
       <ul class="nav justify-content-md-center">
         <li class="nav-item">
           <a class="nav-link active" href="#">Politique de confidentialité</a>
@@ -79,6 +92,7 @@
 
     <!-- Optional JavaScript -->
     <script src="../js/api.js"></script>
+    <script src="../js/header_panier.js"></script>
     <script src="../js/produit.js"></script>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
