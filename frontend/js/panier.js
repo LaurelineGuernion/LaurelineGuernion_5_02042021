@@ -5,51 +5,53 @@ let enregistementDansLocalStorage = JSON.parse(localStorage.getItem("Articles"))
 let articlePanier = document.getElementById("article_panier");
 let totalPrix = document.getElementById("total_prix");
 
-if(enregistementDansLocalStorage === null) {
-    //Si le panier est vide
-    const divPanierVide = document.createElement("div");
-    divPanierVide.className = "col text-center h4 border px-3 py-3";
-    divPanierVide.innerHTML = "Mon panier est vide";
-    articlePanier.appendChild(divPanierVide);
+const afficherProduitPanier = () => {
+    if(enregistementDansLocalStorage === null) {
+        //Si le panier est vide
+        const divPanierVide = document.createElement("div");
+        divPanierVide.className = "col text-center h4 border px-3 py-3";
+        divPanierVide.innerHTML = "Mon panier est vide";
+        articlePanier.appendChild(divPanierVide);
 
-} else {
-    //Si le panier n'est pas vide
-    for(i = 0; i < enregistementDansLocalStorage.length; i++) {
-        let divInfo = document.createElement("div");
-        divInfo.className = "border col-lg-4 rounded-0 mb-5 px-2 align-self-stretch";
-        articlePanier.appendChild(divInfo);
+    } else {
+        //Si le panier n'est pas vide
+        for(i = 0; i < enregistementDansLocalStorage.length; i++) {
+            let divInfo = document.createElement("div");
+            divInfo.className = "border col-lg-4 rounded-0 mb-5 px-2 align-self-stretch";
+            articlePanier.appendChild(divInfo);
 
-        let image = document.createElement("img");
-        image.className = "img-fluid my-3";
-        image.alt = "Image de l'article";
-        image.src = enregistementDansLocalStorage[i].imageUrl;
-        divInfo.appendChild(image);
-        
-        let divTitreInfo = document.createElement("h3");
-        divTitreInfo.className = "h4";
-        divTitreInfo.innerHTML = "Titre : " + enregistementDansLocalStorage[i].nomArticle;
-        divInfo.appendChild(divTitreInfo);
-        
-        let divReference = document.createElement("p");
-        divReference.className = "text-info small";
-        divReference.innerHTML = "Référence : " + enregistementDansLocalStorage[i].id;
-        divInfo.appendChild(divReference);
-        
-        let divChoixLentille = document.createElement("p");
-        divChoixLentille.innerHTML = "Choix lentille : " + enregistementDansLocalStorage[i].ChoixOption;
-        divInfo.appendChild(divChoixLentille);
+            let image = document.createElement("img");
+            image.className = "img-fluid my-3";
+            image.alt = "Image de l'article";
+            image.src = enregistementDansLocalStorage[i].imageUrl;
+            divInfo.appendChild(image);
+            
+            let divTitreInfo = document.createElement("h3");
+            divTitreInfo.className = "h4";
+            divTitreInfo.innerHTML = "Titre : " + enregistementDansLocalStorage[i].nomArticle;
+            divInfo.appendChild(divTitreInfo);
+            
+            let divReference = document.createElement("p");
+            divReference.className = "text-info small";
+            divReference.innerHTML = "Référence : " + enregistementDansLocalStorage[i].id;
+            divInfo.appendChild(divReference);
+            
+            let divChoixLentille = document.createElement("p");
+            divChoixLentille.innerHTML = "Choix lentille : " + enregistementDansLocalStorage[i].ChoixOption;
+            divInfo.appendChild(divChoixLentille);
 
-        let spanQuantite = document.createElement("span");
-        spanQuantite.innerHTML = "Quantité : ";
-        divInfo.appendChild(spanQuantite);
+            let spanQuantite = document.createElement("span");
+            spanQuantite.innerHTML = "Quantité : ";
+            divInfo.appendChild(spanQuantite);
 
-        let quantite = enregistementDansLocalStorage[i].quantite;
-        let quantiteSeul = document.createElement("span");
-        quantiteSeul.textContent = quantite;
-        divInfo.appendChild(quantiteSeul);
-
+            let quantite = enregistementDansLocalStorage[i].quantite;
+            let quantiteSeul = document.createElement("span");
+            quantiteSeul.textContent = quantite;
+            divInfo.appendChild(quantiteSeul);
+        };
     };
 };
+afficherProduitPanier();
 
 //  AFFICHER LE TOTAL DES PRODUITS EN EUROS  
 const totalPrixCalcule = () => {
@@ -122,7 +124,7 @@ form.addEventListener("submit", function(event) {
         event.preventDefault();
         // ENREGISTREMENT DU FORMULAIRE DANS L'API
         // Récupération id produits sous forme de tableau
-        products = [];
+        let products = [];
         for (var i = 0; i < enregistementDansLocalStorage.length; i++) {
             products.push(enregistementDansLocalStorage[i].id);
         };
@@ -143,23 +145,26 @@ form.addEventListener("submit", function(event) {
         });
 
         // ENVOI DANS L'API CAMERAS/ORDER
-        const options = {
-            method: "POST",
-            body: envoiInfos,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
+        const envoiApi = () => {
+            const options = {
+                method: "POST",
+                body: envoiInfos,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            };
 
-        fetch("http://localhost:3000/api/cameras/order", options)
-            .then(response => response.json())
-            .then( response => {
-                localStorage.setItem("Order Id", JSON.stringify(response.orderId));
-                localStorage.setItem("Contact", JSON.stringify(response.contact));
-                localStorage.setItem("Prix Total", JSON.stringify(EnregistrementPrixTotal));
-                localStorage.removeItem("Articles");
-                window.location.replace("confirmation.html");
-            })
-            .catch((error) => console.log(error));
-    }
+            fetch("http://localhost:3000/api/cameras/order", options)
+                .then(response => response.json())
+                .then( response => {
+                    localStorage.setItem("Order Id", JSON.stringify(response.orderId));
+                    localStorage.setItem("Contact", JSON.stringify(response.contact));
+                    localStorage.setItem("Prix Total", JSON.stringify(EnregistrementPrixTotal));
+                    localStorage.removeItem("Articles");
+                    window.location.replace("confirmation.html");
+                })
+                .catch((error) => console.log(error));
+        } ;
+        envoiApi();
+    };
 });
