@@ -9,7 +9,7 @@ const afficherProduitPanier = () => {
     if(enregistementDansLocalStorage === null) {
         //Si le panier est vide
         const divPanierVide = document.createElement("div");
-        divPanierVide.className = "col text-center h4 border px-3 py-3";
+        divPanierVide.className = "col text-center mx-4 h4 border px-3 py-3";
         divPanierVide.innerHTML = "Mon panier est vide";
         articlePanier.appendChild(divPanierVide);
 
@@ -86,7 +86,7 @@ let btnEnvoiForm = document.getElementById("btn_envoi_form");
 // REGEX vérifications
 let RegexLettre = /^[a-zA-ZÀ-ÿ-\s]+$/;
 let RegexLettreNombre = /^[a-zA-ZÀ-ÿ-0-9-\s]+$/;
-let RegexLettreNombreVirgule = /^[a-zA-ZÀ-ÿ-0-9-\s,]+$/;
+let RegexLettreNombreVirgule = /^[a-zA-ZÀ-ÿ-0-9-\s,']+$/;
 
 // Conditions de validation des champs du formulaire 
 form.addEventListener("submit", function(event) {
