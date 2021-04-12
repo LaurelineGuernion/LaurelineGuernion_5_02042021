@@ -48,6 +48,12 @@ const afficherProduitPanier = () => {
             let quantiteSeul = document.createElement("span");
             quantiteSeul.textContent = quantite;
             divInfo.appendChild(quantiteSeul);
+
+            let prixTotalDuProduit = enregistementDansLocalStorage[i].prix * enregistementDansLocalStorage[i].quantite;
+            let prix = document.createElement("p");
+            prix.className = "font-weight-bold my-2";
+            prix.textContent = prixTotalDuProduit + " €";
+            divInfo.appendChild(prix);
         };
     };
 };
