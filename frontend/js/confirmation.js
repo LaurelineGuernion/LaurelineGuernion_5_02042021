@@ -19,7 +19,6 @@ mailConfirmation.textContent = "Un mail récapitulatif est envoyé à l'adresse 
 
 // Cliquer sur le bouton Retour à l'accueil
 btnRetourAccueil.addEventListener("click", function() {
-    const urlParametre = window.location;
     let btnRetour = location.href = "../index.html";
 });
 
