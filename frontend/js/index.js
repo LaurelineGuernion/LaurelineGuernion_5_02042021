@@ -47,8 +47,6 @@ const ajoutArticles = async() => {
 
       //////// CLIQUER SUR LE PRODUIT ET AFFICHAGE DU PRODUIT SUR " PAGE PRODUIT "
       articleBtn.addEventListener("click", function() {
-        const urlParametre = window.location;
-        const articleId = article._id;
         let pageProduit = location.href = "html/produit.html" + "?id=" + article._id;
       });
 
