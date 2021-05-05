@@ -32,7 +32,9 @@ const ajoutArticles = async() => {
 
       let titrePriceH4 = document.createElement("h4");
       titrePriceH4.className = "card-title h5 text-center text-secondary";
-      titrePriceH4.innerHTML = article.price + " €";
+      let prixEuro = article.price;
+      let prixCentimes = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prixEuro/100);
+      titrePriceH4.innerHTML = prixCentimes;
       cardBody.appendChild(titrePriceH4);
 
       let articleDescription = document.createElement("p");
@@ -46,8 +48,8 @@ const ajoutArticles = async() => {
       unArticle.appendChild(articleBtn);
 
       //////// CLIQUER SUR LE PRODUIT ET AFFICHAGE DU PRODUIT SUR " PAGE PRODUIT "
-      articleBtn.addEventListener("click", function() {
-        let pageProduit = location.href = "html/produit.html" + "?id=" + article._id;
+      articleBtn.addEventListener("click", () => {
+        let pageProduit = location.href = `html/produit.html?id=${article._id}`;
       });
 
     });

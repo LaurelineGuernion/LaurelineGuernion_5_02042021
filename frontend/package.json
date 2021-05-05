@@ -4,8 +4,6 @@
   "description": "Boutique en ligne front-end",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-cli serve --mode development",
     "sass": "sass --watch ./sass/main.scss:./css/style.css"
   },
   "author": "Laureline Guernion",
@@ -15,10 +13,5 @@
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "sass": "^1.32.8"
-  },
-  "devDependencies": {
-    "webpack": "^5.24.4",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
   }
 }

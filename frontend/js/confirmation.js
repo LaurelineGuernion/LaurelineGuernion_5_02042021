@@ -18,12 +18,12 @@ adresse.textContent = recupContact.address + ", " + recupContact.city;
 mailConfirmation.textContent = "Un mail récapitulatif est envoyé à l'adresse suivante : " + recupContact.email;
 
 // Cliquer sur le bouton Retour à l'accueil
-btnRetourAccueil.addEventListener("click", function() {
+btnRetourAccueil.addEventListener("click", () => {
     let btnRetour = location.href = "../index.html";
 });
 
 // Vanille JavaScript - supprimer les clés du LocalStorage
-window.onbeforeunload = function() {
+window.onbeforeunload = () => {
     localStorage.removeItem("Order Id");
     localStorage.removeItem("Contact");
     localStorage.removeItem("Prix Total");

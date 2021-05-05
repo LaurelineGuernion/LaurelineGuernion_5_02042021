@@ -15,7 +15,7 @@ const afficherProduitPanier = () => {
 
     } else {
         //Si le panier n'est pas vide
-        for(i = 0; i < enregistementDansLocalStorage.length; i++) {
+        for(let i = 0; i < enregistementDansLocalStorage.length; i++) {
             let divInfo = document.createElement("div");
             divInfo.className = "border col-lg-4 rounded-0 mb-5 px-2 align-self-stretch";
             articlePanier.appendChild(divInfo);
@@ -48,11 +48,13 @@ const afficherProduitPanier = () => {
             let quantiteSeul = document.createElement("span");
             quantiteSeul.textContent = quantite;
             divInfo.appendChild(quantiteSeul);
+            
 
             let prixTotalDuProduit = enregistementDansLocalStorage[i].prix * enregistementDansLocalStorage[i].quantite;
+            let prixCentimes = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prixTotalDuProduit/100);
             let prix = document.createElement("p");
             prix.className = "font-weight-bold my-2";
-            prix.textContent = prixTotalDuProduit + " €";
+            prix.textContent = prixCentimes;
             divInfo.appendChild(prix);
         };
     };
@@ -65,12 +67,13 @@ const totalPrixCalcule = () => {
         totalPrix.innerHTML = "Total : " + 0 + " € ";
     } else {
         let totalArticles = [];
-        for (var i = 0; i < enregistementDansLocalStorage.length; i++) {
+        for (let i = 0; i < enregistementDansLocalStorage.length; i++) {
             totalArticles.push(enregistementDansLocalStorage[i].prix * enregistementDansLocalStorage[i].quantite);
         };
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         let totalAfficher = totalArticles.reduce(reducer);
-        totalPrix.innerHTML = "Total : " + totalAfficher + " € ";
+        let prixCentimes = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalAfficher/100);
+        totalPrix.innerHTML = "Total : " + prixCentimes;
     };
 };
 totalPrixCalcule();
@@ -95,7 +98,7 @@ let RegexLettreNombre = /^[a-zA-ZÀ-ÿ-0-9-\s]+$/;
 let RegexLettreNombreVirgule = /^[a-zA-ZÀ-ÿ-0-9-\s,']+$/;
 
 // Conditions de validation des champs du formulaire 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", (event) => {
     if(RegexLettre.test(firstName.value) == false) {
         event.preventDefault();
         indication.textContent = "Le champs est vide ou n'accepte pas les caractères spéciaux, veuillez ressaisir à nouveau vos informations.";
@@ -131,7 +134,7 @@ form.addEventListener("submit", function(event) {
         // ENREGISTREMENT DU FORMULAIRE DANS L'API
         // Récupération id produits sous forme de tableau
         let products = [];
-        for (var i = 0; i < enregistementDansLocalStorage.length; i++) {
+        for (let i = 0; i < enregistementDansLocalStorage.length; i++) {
             products.push(enregistementDansLocalStorage[i].id);
         };
 

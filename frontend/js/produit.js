@@ -32,7 +32,9 @@ await fetch(`http://localhost:3000/api/cameras/${leId}`)
       idArticle.innerHTML = "Référence : " + leId;
       nameArticle.innerHTML = arrayId.name;
       descriptionArticle.innerHTML = arrayId.description;
-      priceArticle.innerHTML = arrayId.price + " €";
+      let prixEuro = arrayId.price;
+      let prixCentimes = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prixEuro/100);
+      priceArticle.innerHTML = prixCentimes;
 
       // Permet d'afficher les différentes options lentilles dans <select>
       for(let lentille in arrayId.lenses) {
@@ -42,7 +44,7 @@ await fetch(`http://localhost:3000/api/cameras/${leId}`)
       };
 
       // Choix d'une option de lentille 
-      choixLentilles.addEventListener("change", function() {
+      choixLentilles.addEventListener("change", () => {
         selectOption = choixLentilles.options[choixLentilles.selectedIndex].text;
         btnEnvoiPanier.removeAttribute("disabled");
       });
@@ -56,8 +58,8 @@ await fetch(`http://localhost:3000/api/cameras/${leId}`)
       //////// ENVOI ARTICLE DANS LE LOCALSTORAGE
 
       // Ecouter btn " Ajouter au panier "
-      btnEnvoiPanier.addEventListener("click", function(event) {
-        event.preventDefault();
+      btnEnvoiPanier.addEventListener("click", (e) => {
+        e.preventDefault();
 
         // Choix article à mettre dans mon panier
         let ajoutProduitPanier = {
@@ -89,7 +91,7 @@ await fetch(`http://localhost:3000/api/cameras/${leId}`)
           } else {
           //si produit existant  = ajouter quantité | boucler dans le panier avec for
             let produitIndex = false;
-            for(i = 0; i < enregistementDansLocalStorage.length; i++) {
+            for(let i = 0; i < enregistementDansLocalStorage.length; i++) {
               //La condition du produit existant
               if (enregistementDansLocalStorage[i].id === ajoutProduitPanier.id && enregistementDansLocalStorage[i].ChoixOption === ajoutProduitPanier.ChoixOption) {
                 produitIndex = i;
